@@ -9,9 +9,12 @@ using System.Text;
  */
 public class GameManager : MonoBehaviour{
 	TetrisFactoryBase  TetrisFactory;
+
+	public GameObject cube;
 //    public delegate eventCallback;
 	void Start () {
-		
+		TetrisFactory = new TetrisFactory_L ();
+		Tetris t = TetrisFactory.create ();
 	}
 
     /**

@@ -8,8 +8,8 @@ public class Block : MonoBehaviour {
 	private bool[,] blockMatrix;
 	
 	private int size;
-	private float halfSize;
-	private float halfSizeFloat;
+//	private float halfSize;
+//	private float halfSizeFloat;
 	private float childSize;
 	private int xPosition;
 	private int yPosition;
@@ -40,9 +40,9 @@ public class Block : MonoBehaviour {
 		     }
 	    }
 		
-		halfSize = (size + 1) * .5f;
+		//halfSize = (size + 1) * .5f;
 		childSize = (size - 1) * .5f;
-		halfSizeFloat = size * .5f;
+		//halfSizeFloat = size * .5f;
 		
 		blockMatrix = new bool[size, size];
 		for(int y=0;y<size;y++){
