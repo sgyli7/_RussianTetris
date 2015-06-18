@@ -34,12 +34,20 @@ public abstract class TetrisFactoryBase {
 			}
 		}
 		
-		shape = new Element[size , size];
-		for(int y=0;y<size;y++){
-			for(int x=0;x<size;x++){
-				
+		int [,] shapedata = new int[size,size];
+		for(int x=0;x<size;x++){
+			for(int y=0;y<size;y++){
+//				shapedata[x,y] = shapeStrings[x,y] == '1' ? 0:1;
+				if (shapeStrings[x][y] == '1'){
+					shapedata [x,y] = 1;
+				}
+				else{
+					shapedata[x,y] = 0;
+				}
 			}
 		}
+		
+		
 		
 	}
 
