@@ -7,20 +7,28 @@ using System.Text;
 /**
  * 
  */
-public class RotateBase {
+public abstract class RotateBase {
 
-    /**
-     * 
-     */
     public RotateBase() {
+
     }
 
 
-    /**
-     * @param shape
-     */
-    public void execute(Array shape) {
-        // TODO implement here
+	public virtual void execute() {
+ 
     }
+
+}
+
+
+public class RotateClassic : RotateBase {
+
+	public RotateClassic () {
+	
+	}
+
+	public override void execute() {
+
+	}
 
 }

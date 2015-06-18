@@ -8,22 +8,31 @@ using System.Text;
  * 
  */
 public class Tetris {
-	
+
+	protected int _size; 
 	protected Element[,] _shape;
+	protected RotateBase _rotateStyle;
 	protected Vector2 _position;
 	
-	protected string _shapeStr;
-	protected RotateBase _rotateStyle;
-	protected int _size; 
-	
-	public Element[,] shape{
-		get;set;
+	public Element[,] Shape{
+		get { 
+			return _shape;
+		}
+		set { 
+			_shape = value;
+		}
 	}
+	public int Size {
+		get {
+			return _size;
+		}
+	}
+
     /**
-     * 
+     *  Constructor
      */
-	public Tetris(string shapeStr , RotateBase rotateStyle) {
-		_shapeStr = shapeStr;
+	public Tetris(int size , RotateBase rotateStyle) {
+		_shape = new Element[size,size];
 		_rotateStyle = rotateStyle;
 		
     }
