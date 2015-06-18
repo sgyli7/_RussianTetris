@@ -37,8 +37,16 @@ public abstract class TetrisFactoryBase {
 				shapeData [x,y] = shapeStrings[x][y]=='1' ? 1:0;
 			}
 		}
+		
+		// Reverse the ShapeData to real world space Shape
+		int [,] shape = new int[size,size];
+		for(int x=0;x<size;x++){
+			for(int y=0;y<size;y++){
+				shape[x,y]=shapeData[(size-1)-y,x];
+			}
+		}
 
-		return shapeData;
+		return shape;
 		
 	}
 
@@ -47,7 +55,7 @@ public abstract class TetrisFactoryBase {
 		int height = shape.GetLength (1);
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
-				tetris.Shape [x,y].isNull = shape [x,y] != 0;
+				tetris.Shape [x,y].isNull = shape [x,y] == 0;
 			}
 		}
 
@@ -59,7 +67,7 @@ public class TetrisFactory_L : TetrisFactoryBase{
 	
 	public override Tetris create ()
 	{
-		Tetris tetris = new Tetris (3,new RotateClassic()) ;
+		Tetris tetris = new Tetris (3,new RotateClassic()) ;	
 		string shape = "010,010,011";
 		this.putShape (ref tetris, this.str2Shape (shape));
 		return tetris;
@@ -70,7 +78,9 @@ public class TetrisFactory_J : TetrisFactoryBase{
 	
 	public override Tetris create ()
 	{
-		Tetris tetris = new Tetris (3,new RotateClassic()) ;
+		Tetris tetris = new Tetris (3,new RotateClassic()) ;	
+		string shape = "010,010,110";
+		this.putShape (ref tetris, this.str2Shape (shape));
 		return tetris;
 	}
 }
@@ -79,7 +89,9 @@ public class TetrisFactory_T : TetrisFactoryBase{
 	
 	public override Tetris create ()
 	{
-		Tetris tetris = new Tetris (3,new RotateClassic()) ;
+		Tetris tetris = new Tetris (3,new RotateClassic()) ;	
+		string shape = "000,111,010";
+		this.putShape (ref tetris, this.str2Shape (shape));
 		return tetris;
 	}
 }
@@ -88,7 +100,9 @@ public class TetrisFactory_S : TetrisFactoryBase{
 
 	public override Tetris create ()
 	{
-		Tetris tetris = new Tetris (3,new RotateClassic()) ;
+		Tetris tetris = new Tetris (3,new RotateClassic()) ;	
+		string shape = "011,110,000";
+		this.putShape (ref tetris, this.str2Shape (shape));
 		return tetris;
 	}
 }
@@ -97,7 +111,9 @@ public class TetrisFactory_Z : TetrisFactoryBase{
 	
 	public override Tetris create ()
 	{
-		Tetris tetris = new Tetris (3,new RotateClassic()) ;
+		Tetris tetris = new Tetris (3,new RotateClassic()) ;	
+		string shape = "110,011,000";
+		this.putShape (ref tetris, this.str2Shape (shape));
 		return tetris;
 	}
 }
@@ -106,7 +122,9 @@ public class TetrisFactory_O : TetrisFactoryBase{
 	
 	public override Tetris create ()
 	{
-		Tetris tetris = new Tetris (2,new RotateClassic()) ;
+		Tetris tetris = new Tetris (2,new RotateClassic()) ;	
+		string shape = "11,11";
+		this.putShape (ref tetris, this.str2Shape (shape));
 		return tetris;
 	}
 }
@@ -115,7 +133,9 @@ public class TetrisFactory_I : TetrisFactoryBase{
 	
 	public override Tetris create ()
 	{
-		Tetris tetris = new Tetris (4,new RotateClassic()) ;
+		Tetris tetris = new Tetris (4,new RotateClassic()) ;	
+		string shape = "0100,0100,0100,0100";
+		this.putShape (ref tetris, this.str2Shape (shape));
 		return tetris;
 	}
 }

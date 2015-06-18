@@ -10,6 +10,7 @@ using System.Text;
 public class LevelStrategyBase {
 
     public LevelStrategyBase() {
+    
     }
 
 
