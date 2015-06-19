@@ -13,6 +13,18 @@ public class Map {
 	protected int _height;
 	protected List<Element[]> _elementArrayList;
 	
+	public int Width {
+		get { 
+			return _width;
+		}
+	}
+	
+	public int Height {
+		get { 
+			return _height;
+		}
+	}
+		
 	public List<Element[]> Elements {
 		get { 
 			return _elementArrayList;

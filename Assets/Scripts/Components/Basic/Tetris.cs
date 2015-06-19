@@ -19,12 +19,33 @@ public class Tetris {
 			return _size;
 		}
 	}
+	
+	public int Width {
+		get {
+			return _size;
+		}
+	}
+	
+	public int Height {
+		get {
+			return _size;
+		}
+	}
+	
 	public Element[,] Shape{
 		get { 
 			return _shape;
 		}
 		set { 
 			_shape = value;
+		}
+	}
+	public Vector2 Postion {
+		get { 
+			return _position;
+		}
+		set { 
+			_position = value;
 		}
 	}
 	

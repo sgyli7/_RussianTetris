@@ -9,21 +9,13 @@ using System.Text;
  */
 public class PlayerCredit {
 
-    /**
-     * 
-     */
-    public PlayerCredit() {
-    }
-
-    /**
-     * 
-     */
     public int score;
-
-    /**
-     * 
-     */
     public int level;
+    
+    public PlayerCredit () {
+    	score = 0;
+    	level = 0;
+    }
 
 
 }

@@ -47,16 +47,19 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Components\Basic\Element.cs" />
+     <Compile Include="Assets\Scripts\Components\Basic\Enums.cs" />
      <Compile Include="Assets\Scripts\Components\Basic\Map.cs" />
      <Compile Include="Assets\Scripts\Components\Basic\RotateBase.cs" />
      <Compile Include="Assets\Scripts\Components\Basic\Tetris.cs" />
      <Compile Include="Assets\Scripts\Components\Basic\TetrisFactoryBase.cs" />
-     <Compile Include="Assets\Scripts\Components\Enums\Operator.cs" />
-     <Compile Include="Assets\Scripts\Components\Enums\TetrisEvent.cs" />
      <Compile Include="Assets\Scripts\Components\Manager\GameManager.cs" />
      <Compile Include="Assets\Scripts\Components\Manager\GameRule.cs" />
      <Compile Include="Assets\Scripts\Components\Manager\LevelStrategyBase.cs" />
      <Compile Include="Assets\Scripts\Components\Manager\PlayerCredit.cs" />
+     <Compile Include="Assets\Scripts\Components\View\SecneView.cs" />
+     <Compile Include="Assets\Scripts\Components\View\TetrisPreview.cs" />
+     <Compile Include="Assets\Scripts\Components\View\TetrisView.cs" />
+     <Compile Include="Assets\Scripts\Components\View\TouchLayer.cs" />
      <Compile Include="Assets\Scripts\OLD\Block.cs" />
      <Compile Include="Assets\Scripts\OLD\Manager.cs" />
  <Reference Include="UnityEngine.UI">
