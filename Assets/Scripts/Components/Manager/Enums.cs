@@ -10,5 +10,6 @@ public enum Operator {
 
 public enum TetrisEvent {
 	CHANGE_POSITION,
-	ATTACH
+	ATTACH,
+	GAME_OVER
 }

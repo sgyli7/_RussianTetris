@@ -18,13 +18,15 @@ public class GameManager {
 	protected Hashtable _levelStrategyHashMap;
 	protected List<GameRule> _gameRules;
 	protected PlayerCredit _playerCredit;
+
+	public delegate void TetrisEventHanlder (TetrisEvent e);
+	public static event TetrisEventHanlder _eventCallback;
 	
 	float time = 0.0f;																//Current Time, used to controll Tetris falling
 	int score = 0;																	//Player Score, used to Level up
 	bool isSpeedup = false;													//Wether in "Speed Up" mode
 	bool gameRuleInitCompleted = false;								//Wether Levels Infos were loaded
 
-//    public delegate eventCallback;
 	
 	/**
      *  Constructor
@@ -82,8 +84,29 @@ public class GameManager {
 		};
 			
 			
-			
 		time += Time.deltaTime;
+
+		float speed = isSpeedup ? 1/(rule.Speed*3) : 1/rule.Speed ;
+
+		// check the coliision
+		while (_currentTetris != null  && time > speed){
+			_currentTetris.Postion = new Vector2 (_currentTetris.Postion.x,_currentTetris.Postion.y - 1);
+			if (collisionDetection(_currentTetris)) {
+				_currentTetris.Postion = new Vector2 (_currentTetris.Postion.x,_currentTetris.Postion.y + 1);
+				putTetrisToMap (_currentTetris);
+				checkElements();
+				_currentTetris = null;
+			}
+			else{
+				if ( _eventCallback != null){
+					_eventCallback(TetrisEvent.CHANGE_POSITION);
+				}
+			}
+
+			time -= speed;
+		}
+
+
     }
 
 
