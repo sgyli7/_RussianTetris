@@ -17,3 +17,14 @@ public class TetrisView {
 
 
 }
+
+public class TetrisPreview : TetrisView {
+	
+	/**
+     * 
+     */
+	public TetrisPreview() {
+	}
+	
+	
+}

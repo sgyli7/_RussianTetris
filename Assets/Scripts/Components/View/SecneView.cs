@@ -9,14 +9,15 @@ using System.Text;
  */
 public class SecneView : MonoBehaviour{
 
-public GameObject cube;
+	public GameObject cube;
 
-	protected GameManager gameManager;
-    /**
-     * 
-     */
+	protected GameManager _gameManager;
+	protected TetrisView _tetrisView;
+	protected TetrisPreview _tetrisPreview;
+
+
     public void Awake () {
-		gameManager = new GameManager();
+		_gameManager = new GameManager();
 	}
 		
 	public void Start () {
@@ -33,8 +34,7 @@ public GameObject cube;
     }
     
     public void Update () {
-    	gameManager.step();
-
+    	_gameManager.step();
     }
 
 
@@ -45,44 +45,5 @@ public GameObject cube;
 	public void onTouchCallback(Operator op ) {
 		
 	}
-	
-	
-	
-	
-	//	void Start () {
-	//		//		_tetrisFactory = new TetrisFactory_I ();
-	//		//		_currentTetris = _tetrisFactory.create ();
-	//		//		_currentTetris.rotateTetris();
-	//		//		int tSize = _currentTetris.Size;
-	//		//		for(int x=0;x<tSize;x++){
-	//		//			for(int y=0;y<tSize;y++){
-	//		//				if (_currentTetris.Shape[x,y].isNull == false){
-	//		//					Instantiate(cube, new Vector3( x,  y, 0), Quaternion.identity);
-	//		//				}	
-	//		//			}
-	//		//		}
-	//		_map = new Map ( 10, 20);
-	//		//		for(int y=0;y<20;y++){
-	//		//			for(int x=0;x<10;x++){
-	//		//					if (!_map.Elements[y][x].isNull ){
-	//		//						Instantiate(cube, new Vector3( x, y, 0), Quaternion.identity);
-	//		//					}	
-	//		//				}
-	//		//			}
-	//		
-	//	}
-	
-	//	void Update () {
-	//		if (Input.GetKeyDown(KeyCode.A)){
-	//			_map.checkElements();
-	//			for(int y=0;y<20;y++){
-	//				for(int x=0;x<10;x++){
-	//					if (_map.Elements[y][x].isNull ){
-	//						Instantiate(cube, new Vector3( x + 20, y, 0), Quaternion.identity);
-	//					}	
-	//				}
-	//			}
-	//		}
-	//	}
 	
 }

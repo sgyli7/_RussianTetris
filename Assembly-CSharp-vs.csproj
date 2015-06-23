@@ -57,7 +57,6 @@
      <Compile Include="Assets\Scripts\Components\Manager\LevelStrategyBase.cs" />
      <Compile Include="Assets\Scripts\Components\Manager\PlayerCredit.cs" />
      <Compile Include="Assets\Scripts\Components\View\SecneView.cs" />
-     <Compile Include="Assets\Scripts\Components\View\TetrisPreview.cs" />
      <Compile Include="Assets\Scripts\Components\View\TetrisView.cs" />
      <Compile Include="Assets\Scripts\Components\View\TouchLayer.cs" />
      <Compile Include="Assets\Scripts\OLD\Block.cs" />

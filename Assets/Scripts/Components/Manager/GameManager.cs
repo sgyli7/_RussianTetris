@@ -283,19 +283,19 @@ public class GameManager {
 		
 		//Shift Order: Down > Up > Left > Right
 		if (collisionDetection(tmpTetris)){
-			//Down
+			//Shift Down
 			tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x,tmpTetris.Postion.y - 1);
 			if (collisionDetection(tmpTetris)){
 				tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x,tmpTetris.Postion.y + 1);
-				//Up
+				//Shift Up
 				tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x,tmpTetris.Postion.y + 1);
 				if (collisionDetection(tmpTetris)){
 					tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x,tmpTetris.Postion.y - 1);
-					//Left
+					//Shift Left
 					tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x - 1,tmpTetris.Postion.y );
 					if (collisionDetection(tmpTetris)){
 						tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x + 1,tmpTetris.Postion.y );
-						//Right
+						//Shift Right
 						tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x + 1,tmpTetris.Postion.y );
 						if (collisionDetection(tmpTetris)){
 							tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x - 1,tmpTetris.Postion.y );

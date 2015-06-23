@@ -1,10 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Components\View\SecneView.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Components\Manager\GameManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\Components\Manager\GameManager.cs" Line="56" Column="1" />
-      <File FileName="Assets\Scripts\Components\View\SecneView.cs" Line="43" Column="6" />
-      <File FileName="Assets\Scripts\Components\Manager\PlayerCredit.cs" Line="10" Column="1" />
+      <File FileName="Assets\Scripts\Components\View\SecneView.cs" Line="20" Column="31" />
+      <File FileName="Assets\Scripts\Components\View\TetrisView.cs" Line="18" Column="1" />
+      <File FileName="Assets\Scripts\Components\Manager\GameManager.cs" Line="281" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
