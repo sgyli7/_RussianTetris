@@ -9,22 +9,37 @@ using System.Text;
  */
 public class SecneView : MonoBehaviour{
 
+public GameObject cube;
+
 	protected GameManager gameManager;
     /**
      * 
      */
-    public void Start () {
+    public void Awake () {
 		gameManager = new GameManager();
+	}
 		
+	public void Start () {
+//	gameManager.step();
+//		Tetris _currentTetris = gameManager.CurrentTetris;
+//		int tSize = _currentTetris.Size;
+//		for(int x=0;x<tSize;x++){
+//			for(int y=0;y<tSize;y++){
+//				if (_currentTetris.Shape[x,y].isNull == false){
+//					Instantiate(cube, new Vector3( x + _currentTetris.Postion.x ,  y + _currentTetris.Postion.y, 0), Quaternion.identity);
+//				}	
+//			}
+//		}
     }
     
     public void Update () {
     	gameManager.step();
+
     }
 
 
     public void onEventCallback (TetrisEvent e) {
-    
+    	
     }
 	
 	public void onTouchCallback(Operator op ) {

@@ -64,11 +64,11 @@ public class Map {
 			}
 			
 			if (filled){
-				_elementArrayList.Remove(elementArray);
+				_elementArrayList.Remove(elementArray);		//Remove filled Elements
 				for (int x = 0; x < _width; x++) {
 					elementArray[x].isNull = true;
 				}
-				_elementArrayList.Add(elementArray);
+				_elementArrayList.Add(elementArray);			//Put them to the top
 				removeCount++;
 			}
 		}
