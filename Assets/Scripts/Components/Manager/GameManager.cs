@@ -175,8 +175,11 @@ public class GameManager {
 				if ( collisionDetection (_currentTetris)){
 					_currentTetris.Postion = new Vector2 (_currentTetris.Postion.x,_currentTetris.Postion.y + 1);
 					putTetrisToMap (_currentTetris);
-					updateElements();
 					_currentTetris = null;
+					if (_eventCallback != null){
+						_eventCallback( TetrisEvent.CHANGE_POSITION);
+					}
+					updateElements();
 				}
 			}
 			break;
@@ -185,12 +188,18 @@ public class GameManager {
 			#region SPEEDUP_START
 		case Operator.SPEEDUP_START:
 			isSpeedup = true;
+			if (_eventCallback != null){
+				_eventCallback( TetrisEvent.CHANGE_POSITION);
+			}
 			break;
 			#endregion
 			
 			#region SPEEDUP_END
 		case Operator.SPEEDUP_END:
 			isSpeedup = false;
+			if (_eventCallback != null){
+				_eventCallback( TetrisEvent.CHANGE_POSITION);
+			}
 			break;
 			#endregion
 		
@@ -198,6 +207,9 @@ public class GameManager {
 		case Operator.TURN:
 			Tetris tmpTetris = _currentTetris.cloneTetris();
 			_currentTetris = rotateAndShiftTetris (tmpTetris);
+			if (_eventCallback != null){
+				_eventCallback( TetrisEvent.CHANGE_POSITION);
+			}
 			break;
 			#endregion
 		}
@@ -207,22 +219,22 @@ public class GameManager {
 
 		for(int x=0;x<tetris.Width;x++){
 			for(int y=0;y<tetris.Height;y++){
-				if (_currentTetris.Shape[x,y].isNull == false){
+				if (tetris.Shape[x,y].isNull == false){
 					//Check bottom boundary
-					if (_currentTetris.Postion.y + y < 0) {
+					if (tetris.Postion.y + y < 0) {
 						return true;
 					}
 					//Check left boundary
-					if (_currentTetris.Postion.x + x < 0) {
+					if (tetris.Postion.x + x < 0) {
 						return true;
 					}
 					//Check right boudary
-					if (_currentTetris.Postion.x + x >= _map.Width) {
+					if (tetris.Postion.x + x >= _map.Width) {
 						return true;
 					}
 					// Check Map Elements
-					if (_currentTetris.Postion.y + y < _map.Height) {
-						Element e = _map.Elements [(int)_currentTetris.Postion.y + y][(int)_currentTetris.Postion.x + x];
+					if (tetris.Postion.y + y < _map.Height) {
+						Element e = _map.Elements [(int)tetris.Postion.y + y][(int)tetris.Postion.x + x];
 						if (e != null && e.isNull == false) {
 							return true;
 						}
@@ -284,18 +296,22 @@ public class GameManager {
 		//Shift Order: Down > Up > Left > Right
 		if (collisionDetection(tmpTetris)){
 			//Shift Down
+			Debug.Log ("Shift Down");
 			tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x,tmpTetris.Postion.y - 1);
 			if (collisionDetection(tmpTetris)){
 				tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x,tmpTetris.Postion.y + 1);
 				//Shift Up
+				Debug.Log ("Shift Up");
 				tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x,tmpTetris.Postion.y + 1);
 				if (collisionDetection(tmpTetris)){
 					tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x,tmpTetris.Postion.y - 1);
 					//Shift Left
+					Debug.Log ("Shift Left");
 					tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x - 1,tmpTetris.Postion.y );
 					if (collisionDetection(tmpTetris)){
 						tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x + 1,tmpTetris.Postion.y );
 						//Shift Right
+						Debug.Log ("Shift Right");
 						tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x + 1,tmpTetris.Postion.y );
 						if (collisionDetection(tmpTetris)){
 							tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x - 1,tmpTetris.Postion.y );

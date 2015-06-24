@@ -1,14 +1,44 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Components\Manager\GameManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Components\View\TetrisPreview.cs">
     <Files>
-      <File FileName="Assets\Scripts\Components\View\SecneView.cs" Line="20" Column="31" />
-      <File FileName="Assets\Scripts\Components\View\TetrisView.cs" Line="18" Column="1" />
-      <File FileName="Assets\Scripts\Components\Manager\GameManager.cs" Line="281" Column="21" />
+      <File FileName="Assets\Scripts\Components\View\TetrisPreview.cs" Line="22" Column="46" />
+      <File FileName="Assets\Scripts\Components\Manager\GameManager.cs" Line="99" Column="33" />
+      <File FileName="Assets\Scripts\Components\View\GameSecne.cs" Line="63" Column="10" />
+      <File FileName="Assets\Scripts\Components\View\TetrisView.cs" Line="51" Column="46" />
+      <File FileName="Assets\Scripts\Components\View\MapView.cs" Line="63" Column="70" />
+      <File FileName="Assets\Scripts\Components\Basic\Tetris.cs" Line="17" Column="2" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="Scripts" expanded="True">
+              <Node name="Components" expanded="True">
+                <Node name="Basic" expanded="True" />
+                <Node name="Manager" expanded="True" />
+                <Node name="View" expanded="True">
+                  <Node name="TetrisPreview.cs" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>tmpTetris.Postion</Value>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="Assets\Scripts\Components\Manager\GameManager.cs" line="300" offsetX="809" offsetY="6792" expression="tmpTetris.Postion" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
 </Properties>
