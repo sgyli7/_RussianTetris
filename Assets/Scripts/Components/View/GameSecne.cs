@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(MapView),typeof(TetrisView),typeof(InputLayer))]
 public class GameSecne : MonoBehaviour {
@@ -13,6 +14,7 @@ public class GameSecne : MonoBehaviour {
 	protected TetrisView _tetrisView;
 	protected InputLayer _inputLayer;
 	public TetrisPreview _tetrisPreview;
+	public Text _scoreText , _levelText , _gameoverText;
 	
 	protected bool isPlaying = true;
 
@@ -41,15 +43,26 @@ public class GameSecne : MonoBehaviour {
 		}
 		// set up TouchLayer
 		_inputLayer = GetComponent<InputLayer>();
+		
+		// set up Tetris Preview
+		_tetrisPreview = GetComponent<TetrisPreview>();
+		
+		// set up UI Texts
+		_scoreText = GameObject.Find("Score").GetComponent<Text>();
+		_levelText = GameObject.Find("Level").GetComponent<Text>();
+		_gameoverText = GameObject.Find("GameoverLabel").GetComponent<Text>();
 	}
 	
 	void Start () {
 		_mapView.createMap(_gameManager.Map);
+		_gameoverText.enabled = false;
 	}
 	
 	void Update () {
 		if (isPlaying){
 			_gameManager.step();
+			_scoreText.text = _gameManager.PlayerCredit.score.ToString();
+			_levelText.text = _gameManager.PlayerCredit.level.ToString();
 		}
 	}
 	
@@ -66,6 +79,8 @@ public class GameSecne : MonoBehaviour {
 		case TetrisEvent.GAME_OVER:
 			isPlaying = false;
 			Debug.Log ("GAME OVER !!!!!!!!!!!!!!!!");
+			_gameoverText.enabled = true;
+			Invoke("restartGame",1f);
 			break;
 		}
 	}
@@ -90,4 +105,8 @@ public class GameSecne : MonoBehaviour {
 		}
 	}
 	
+	void restartGame () {
+		_gameoverText.enabled = false;
+		isPlaying = true;
+	}
 }

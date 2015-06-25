@@ -62,9 +62,10 @@ public class Map {
 					filled = false;
 				}
 			}
-			
+		
 			if (filled){
 				_elementArrayList.Remove(elementArray);		//Remove filled Elements
+				y--; 															// ReCheck the last y postion
 				for (int x = 0; x < _width; x++) {
 					elementArray[x].isNull = true;
 				}
@@ -72,7 +73,16 @@ public class Map {
 				removeCount++;
 			}
 		}
+		Debug.Log ("removeCount:   "+removeCount);
 		return removeCount;
+	}
+	
+	public void clearElements () {
+		for (int y = 0; y < _height; y++) {
+			for (int x = 0; x < _width; x++) {
+				_elementArrayList[y][x].isNull = true;
+			}
+		}
 	}
 
 }

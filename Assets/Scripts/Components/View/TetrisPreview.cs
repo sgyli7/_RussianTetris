@@ -26,17 +26,17 @@ public class TetrisPreview : MonoBehaviour {
 		GameObject tetrisPreviewContainer = GameObject.Find ("Tetris Preview");
 		for (int x = 0; x < maxSize; x++) {
 			for (int y = 0; y < maxSize; y++) {
-				// T1
+				// Instantiate T1 which is the cubes on the top preview
 				var t1 =  (GameObject)Instantiate(ElementCube, new Vector3( x + TetrisListBack_1.position.x ,  y + TetrisListBack_1.position.y, 0), Quaternion.identity);
 				t1.transform.parent = tetrisPreviewContainer.transform;
 				tetris_1[x,y] = t1;
 				tetris_1[x,y].GetComponent<MeshRenderer>().enabled = false;
-				// T2
+				// Instantiate T2 which is the cubes on the top preview
 				var t2 =  (GameObject)Instantiate(ElementCube, new Vector3( x + TetrisListBack_2.position.x ,  y + TetrisListBack_2.position.y, 0), Quaternion.identity);
 				t2.transform.parent = tetrisPreviewContainer.transform;
 				tetris_2[x,y] = t2;
 				tetris_2[x,y].GetComponent<MeshRenderer>().enabled = false;
-				// T3
+				// Instantiate T3 which is the cubes on the top preview
 				var t3 =  (GameObject)Instantiate(ElementCube, new Vector3( x + TetrisListBack_3.position.x ,  y + TetrisListBack_3.position.y, 0), Quaternion.identity);
 				t3.transform.parent = tetrisPreviewContainer.transform;
 				tetris_3[x,y] = t3;
@@ -46,7 +46,7 @@ public class TetrisPreview : MonoBehaviour {
 	}
 	
 	public void updateView ( List<Tetris> TetrisList) {
-		if (TetrisList != null) {
+		if (TetrisList.Count > 3) {
 				Tetris t1 = TetrisList[0];
 				Tetris t2 = TetrisList[1];
 				Tetris t3 = TetrisList[2];
@@ -71,7 +71,15 @@ public class TetrisPreview : MonoBehaviour {
 					
 				}
 			}
-			
+		}
+		else{
+			for (int x = 0; x < maxSize; x++) {
+				for (int y = 0; y <maxSize; y++) {
+					tetris_1 [x,y].GetComponent<MeshRenderer>().enabled = false;
+					tetris_2 [x,y].GetComponent<MeshRenderer>().enabled = false;
+					tetris_3 [x,y].GetComponent<MeshRenderer>().enabled = false;
+				}
+			}
 		}
 	}
 }

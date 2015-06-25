@@ -70,11 +70,11 @@ public class GameManager {
 		
 		TextAsset txt = Resources.Load ("GameRule",typeof(TextAsset)) as TextAsset;
 		string [] lineArray = txt.text.Split ("\r\n"[0]);
-		for (int i = 1;i < lineArray.Length;i++)
+		for (int i = 1;i < lineArray.Length-1;i++)
 		{
 			var ruleValue = lineArray[i].Split(","[0]);
-			GameRule rule = new GameRule (ruleValue[0],ruleValue[1],ruleValue[2]);
 //			Debug.Log (ruleValue[0]+":::::"+ruleValue[1]+":::::"+ruleValue[2]);
+			GameRule rule = new GameRule (ruleValue[0],ruleValue[1],ruleValue[2]);
 			_gameRules.Add (rule);
 		}
 		gameRuleInitCompleted = true;
@@ -112,7 +112,7 @@ public class GameManager {
 			
 		time += Time.deltaTime;
 
-		float speed = isSpeedup ? 1/(rule.Speed*3) : 1/rule.Speed ;
+		float speed = isSpeedup ? 1/(rule.Speed*5) : 1/rule.Speed ;
 
 		// check the coliision of _currentTetris
 		while (_currentTetris != null  && time > speed){
@@ -254,6 +254,12 @@ public class GameManager {
 						if (_eventCallback != null ) {
 							_eventCallback (TetrisEvent.GAME_OVER);
 						}
+						// Restart game
+						_map.clearElements();
+						_playerCredit.level = 0;
+						_playerCredit.score = 0;
+						_tetrisList = null ;
+						_tetrisList = new List<Tetris> ();	
 					}
 					//put Tetris to Map
 					else {
@@ -289,33 +295,40 @@ public class GameManager {
 	
 	protected Tetris rotateAndShiftTetris (Tetris tmp) {
 		Tetris tmpTetris = tmp;
-		
 		//Rotate tmpTetris
 		tmpTetris.rotateTetris();
-		
+		//Shift tmpTetris in 1 space
+		tmpTetris = shiftTetris (tmpTetris, 1);
+		return tmpTetris;
+	}
+	
+    
+	protected Tetris shiftTetris (Tetris tmpTetris, int shiftCount)
+	{
 		//Shift Order: Down > Up > Left > Right
-		if (collisionDetection(tmpTetris)){
+		if (collisionDetection (tmpTetris)) {
 			//Shift Down
-			Debug.Log ("Shift Down");
-			tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x,tmpTetris.Postion.y - 1);
-			if (collisionDetection(tmpTetris)){
-				tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x,tmpTetris.Postion.y + 1);
+			Debug.Log ("Shift Down" + shiftCount );
+			tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x, tmpTetris.Postion.y - shiftCount);
+			if (collisionDetection (tmpTetris)) {
+				tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x, tmpTetris.Postion.y + shiftCount);
 				//Shift Up
-				Debug.Log ("Shift Up");
-				tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x,tmpTetris.Postion.y + 1);
-				if (collisionDetection(tmpTetris)){
-					tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x,tmpTetris.Postion.y - 1);
+				Debug.Log ("Shift Up"+ shiftCount );
+				tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x, tmpTetris.Postion.y + shiftCount);
+				if (collisionDetection (tmpTetris)) {
+					tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x, tmpTetris.Postion.y - shiftCount);
 					//Shift Left
-					Debug.Log ("Shift Left");
-					tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x - 1,tmpTetris.Postion.y );
-					if (collisionDetection(tmpTetris)){
-						tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x + 1,tmpTetris.Postion.y );
+					Debug.Log ("Shift Left"+ shiftCount );
+					tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x - shiftCount, tmpTetris.Postion.y);
+					if (collisionDetection (tmpTetris)) {
+						tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x + shiftCount, tmpTetris.Postion.y);
 						//Shift Right
-						Debug.Log ("Shift Right");
-						tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x + 1,tmpTetris.Postion.y );
-						if (collisionDetection(tmpTetris)){
-							tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x - 1,tmpTetris.Postion.y );
-							Debug.Log ("TetrisRoate: Can not Rotate");
+						Debug.Log ("Shift Right"+ shiftCount );
+						tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x + shiftCount, tmpTetris.Postion.y);
+						if (collisionDetection (tmpTetris)) {
+							tmpTetris.Postion = new Vector2 (tmpTetris.Postion.x - shiftCount, tmpTetris.Postion.y);
+							Debug.Log ("TetrisRoate: Can not Shift in " + shiftCount +" space");
+							return shiftTetris (tmpTetris,shiftCount+1); //Shift tmpTetris in +1 space
 						}
 					}
 				}
@@ -323,6 +336,4 @@ public class GameManager {
 		}
 		return tmpTetris;
 	}
-	
-    
 }

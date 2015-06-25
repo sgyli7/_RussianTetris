@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
 
 public class InputLayer : MonoBehaviour  {
 
@@ -23,12 +24,18 @@ public class InputLayer : MonoBehaviour  {
 		#endif
 	}
 	
-	void standardInput () {
+	protected void standardInput () {
 		if (Input.GetKeyDown(KeyCode.LeftArrow)){
-			_eventCallback(Operator.LEFT);
+			StartCoroutine("moveLeft");
+		}
+		if (Input.GetKeyUp(KeyCode.LeftArrow)){
+			StopCoroutine("moveLeft");
 		}
 		if (Input.GetKeyDown(KeyCode.RightArrow)){
-			_eventCallback(Operator.RIGHT);
+			StartCoroutine("moveRight");
+		}
+		if (Input.GetKeyUp(KeyCode.RightArrow)){
+			StopCoroutine("moveRight");
 		}
 		if (Input.GetKeyDown(KeyCode.UpArrow)){
 			_eventCallback(Operator.DIRECT_FALL);
@@ -39,13 +46,60 @@ public class InputLayer : MonoBehaviour  {
 		if (Input.GetKeyUp(KeyCode.DownArrow)){
 			_eventCallback(Operator.SPEEDUP_END);
 		}
-		if(Input.GetKeyUp(KeyCode.Space)){
+		if(Input.GetKeyDown(KeyCode.Space)){
 			_eventCallback(Operator.TURN);
 		}
 	}
 	
-	void touchInput () {
-	
+	protected void touchInput () {
+		
 	}
+	
+	IEnumerator moveLeft () {
+		while (true){
+			_eventCallback(Operator.LEFT);
+			yield return new WaitForSeconds (0.2f);
+		}
+	}
+	
+	IEnumerator moveRight () {
+		while (true){
+			_eventCallback(Operator.RIGHT);
+			yield return new WaitForSeconds (0.2f);
+		}
+	}
+	
+	#region UI controls 
+	
+	public void onLeftButtonDown () {
+		StartCoroutine("moveLeft");
+	}
+	public void onLeftButtonUp () {
+		StopCoroutine("moveLeft");
+	}
+	public void onRightButtonDown () {
+		StartCoroutine("moveRight");
+	}
+	public void onRightButtonUp () {
+		StopCoroutine("moveRight");
+	}
+	public void onTurnButtonClick () {
+		_eventCallback(Operator.TURN);
+	}
+	public void onDownButtonDown () {
+		_eventCallback(Operator.SPEEDUP_START);
+		StartCoroutine("directDown");
+	}
+	public void onDownButtonUp () {
+		_eventCallback(Operator.SPEEDUP_END);
+		StopCoroutine("directDown");
+	}
+	
+	IEnumerator directDown () {
+		yield return new WaitForSeconds (1f);
+		_eventCallback(Operator.DIRECT_FALL);
+	}
+	
+	#endregion
 	
 }
