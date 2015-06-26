@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 
 public class TetrisPreview : MonoBehaviour {
-
+	[HideInInspector]
 	public Transform TetrisListBack_1,TetrisListBack_2,TetrisListBack_3;
 	public GameObject ElementCube;
 	public GameObject[,] tetris_1, tetris_2 , tetris_3;

@@ -11,5 +11,6 @@ public enum Operator {
 public enum TetrisEvent {
 	CHANGE_POSITION,
 	ATTACH,
+	FILLEDTHEMAP,
 	GAME_OVER
 }

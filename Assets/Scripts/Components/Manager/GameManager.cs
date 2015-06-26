@@ -69,7 +69,14 @@ public class GameManager {
 		_levelStrategyDictionary["advanced"] = new LevelStrategy_Advanced();
 		
 		TextAsset txt = Resources.Load ("GameRule",typeof(TextAsset)) as TextAsset;
+		#if UNITY_STANDALONE_WIN
+		string [] lineArray = txt.text.Split ("\r\n"[0]);
+		#elif UNITY_STANDALONE_OSX
 		string [] lineArray = txt.text.Split ("\n"[0]);
+		#else
+		string [] lineArray = txt.text.Split ("\r\n"[0]);
+		#endif
+		
 		for (int i = 1;i < lineArray.Length-1;i++)
 		{
 			var ruleValue = lineArray[i].Split(","[0]);
@@ -274,12 +281,13 @@ public class GameManager {
 	protected void updateElements () {
 		//checkElements
 		int clearCount = _map.checkElements();
-		if (clearCount != 0 )
-		{
+		_eventCallback (TetrisEvent.ATTACH);
+		if (clearCount != 0 ){
 			if (_eventCallback != null ) {
-				_eventCallback (TetrisEvent.ATTACH);
+				_eventCallback (TetrisEvent.FILLEDTHEMAP);
 			}
 		}
+		
 		
 		//update Player Score
 		_playerCredit.score += clearCount * clearCount * 10;

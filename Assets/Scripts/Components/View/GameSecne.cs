@@ -13,8 +13,11 @@ public class GameSecne : MonoBehaviour {
 	protected MapView _mapView;
 	protected TetrisView _tetrisView;
 	protected InputLayer _inputLayer;
-	public TetrisPreview _tetrisPreview;
+	protected TetrisPreview _tetrisPreview;
+	[HideInInspector]
 	public Text _scoreText , _levelText , _gameoverText;
+	[HideInInspector]
+	public AudioSource _fallTetris, _removeFilledMap; 
 	
 	protected bool isPlaying = true;
 
@@ -51,6 +54,11 @@ public class GameSecne : MonoBehaviour {
 		_scoreText = GameObject.Find("Score").GetComponent<Text>();
 		_levelText = GameObject.Find("Level").GetComponent<Text>();
 		_gameoverText = GameObject.Find("GameoverLabel").GetComponent<Text>();
+		
+		// set up AudioSources
+		_fallTetris = GameObject.Find("fallTetris").GetComponent<AudioSource>();
+		_removeFilledMap = GameObject.Find("removeFilledMap").GetComponent<AudioSource>();
+		
 	}
 	
 	void Start () {
@@ -73,8 +81,14 @@ public class GameSecne : MonoBehaviour {
 		
 		switch (e) {
 		case TetrisEvent.ATTACH:
+			_fallTetris.time = 0.2f;
+			_fallTetris.Play();
 			break;
 		case TetrisEvent.CHANGE_POSITION:
+			break;
+		case TetrisEvent.FILLEDTHEMAP:
+			_fallTetris.time = 0.5f;
+			_removeFilledMap.Play();
 			break;
 		case TetrisEvent.GAME_OVER:
 			isPlaying = false;
