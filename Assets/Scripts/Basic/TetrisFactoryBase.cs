@@ -139,3 +139,14 @@ public class TetrisFactory_I : TetrisFactoryBase{
 		return tetris;
 	}
 }
+
+public class TetrisFactory_X : TetrisFactoryBase{
+	
+	public override Tetris create ()
+	{
+		Tetris tetris = new Tetris (4,new RotateClassic()) ;	
+		string shape = "1111,1111,1111,1111";
+		this.putShape (ref tetris, this.str2Shape (shape));
+		return tetris;
+	}
+}

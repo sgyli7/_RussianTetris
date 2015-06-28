@@ -1,14 +1,15 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Components\View\TetrisPreview.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Components\Basic\Map.cs">
     <Files>
-      <File FileName="Assets\Scripts\Components\View\GameSecne.cs" Line="16" Column="41" />
-      <File FileName="Assets\Scripts\Components\Manager\GameManager.cs" Line="285" Column="25" />
-      <File FileName="Assets\Scripts\Components\View\InputLayer.cs" Line="14" Column="3" />
       <File FileName="Assets\Scripts\Components\Basic\Map.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Components\View\TetrisPreview.cs" Line="7" Column="1" />
-      <File FileName="Assets\Scripts\Components\Basic\TetrisFactoryBase.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Components\Basic\TetrisFactoryBase.cs" Line="132" Column="29" />
+      <File FileName="Assets\Scripts\Components\View\GameSecne.cs" Line="16" Column="41" />
+      <File FileName="Assets\Scripts\Components\Manager\GameManager.cs" Line="71" Column="78" />
+      <File FileName="Assets\Scripts\Components\View\InputLayer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Components\View\TetrisPreview.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Components\Manager\Enums.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Components\Manager\LevelStrategyBase.cs" Line="34" Column="27" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,11 +17,11 @@
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Scripts" expanded="True">
               <Node name="Components" expanded="True">
-                <Node name="Basic" expanded="True" />
-                <Node name="Manager" expanded="True" />
-                <Node name="View" expanded="True">
-                  <Node name="TetrisPreview.cs" selected="True" />
+                <Node name="Basic" expanded="True">
+                  <Node name="Map.cs" selected="True" />
                 </Node>
+                <Node name="Manager" expanded="True" />
+                <Node name="View" expanded="True" />
               </Node>
             </Node>
           </Node>

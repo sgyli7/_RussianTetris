@@ -93,7 +93,7 @@ public class GameManager {
 		
 		GameRule rule = _gameRules [_playerCredit.level];
 		if (_currentTetris == null){
-		
+			isSpeedup = false;	 //ensure speed up not set in the first time
 			// if 1st time, Generate Tetris List
 			if (_tetrisList.Count == 0){
 				for(int i=0;i<5;i++){
@@ -182,7 +182,7 @@ public class GameManager {
 				if ( collisionDetection (_currentTetris)){
 					_currentTetris.Postion = new Vector2 (_currentTetris.Postion.x,_currentTetris.Postion.y + 1);
 					putTetrisToMap (_currentTetris);
-					_currentTetris = null;
+					_currentTetris = null;	
 					if (_eventCallback != null){
 						_eventCallback( TetrisEvent.CHANGE_POSITION);
 					}

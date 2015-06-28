@@ -19,7 +19,7 @@ public class LevelStrategy_Simple :  LevelStrategyBase{
 
 	public override TetrisFactoryBase execute() {
 		float rand = UnityEngine.Random.Range ( 0.0f, 1.0f);
-		if (rand < 0.1) {
+		if (rand < 0.2) {
 			return new TetrisFactory_L();
 		} else if (rand < 0.2) {
 			return new TetrisFactory_J();
@@ -31,6 +31,8 @@ public class LevelStrategy_Simple :  LevelStrategyBase{
 			return new TetrisFactory_Z();
 		} else if (rand < 0.7) {
 			return new TetrisFactory_O();
+//		}else if (rand <0.8) {
+//			return new TetrisFactory_X();		
 		} else {
 			return new TetrisFactory_I();
 		}
